@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #ff7e5f, #feb47b);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cell:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .restart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s;
+        }
+        .modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .winner-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .banner-ad {
+            width: 300px;
+            height: 250px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-board"></div>
+    <div class="restart" onclick="restartGame()">
+        <img src="restart-icon.png" alt="Restart">
+    </div>
+    <div id="modal" class="modal active">
+        <div class="modal-content">
+            <h2>Enter Player Names</h2>
+            <input type="text" id="player1" placeholder="Player 1">
+            <input type="text" id="player2" placeholder="Player 2">
+            <button onclick="startGame()">Start Game</button>
+        </div>
+    </div>
+    <div id="winnerPanel" class="winner-panel">
+        <h2 id="winnerText"></h2>
+        <button onclick="restartGame()">Restart</button>
+    </div>
+  
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'f338a727064681abee53a41668f406c5',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+	document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/f338a727064681abee53a41668f406c5/invoke.js"></scr' + 'ipt>');
+</script>
+    
+    <script>
+        let currentPlayer = 'X';
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let modal = document.getElementById('modal');
+        let player1Name = '';
+        let player2Name = '';
+        let winnerPanel = document.getElementById('winnerPanel');
+        let winnerName = '';
+
+        function renderBoard() {
+            const gameBoard = document.getElementById('game-board');
+            gameBoard.innerHTML = '';
+            board.forEach((cell, index) => {
+                const cellDiv = document.createElement('div');
+                cellDiv.classList.add('cell');
+                cellDiv.innerText = cell === 'X' ? player1Name.charAt(0) : (cell === 'O' ? player2Name.charAt(0) : '');
+                cellDiv.addEventListener('click', () => handleCellClick(index));
+                gameBoard.appendChild(cellDiv);
+            });
+        }
+
+        function handleCellClick(index) {
+            if (board[index] === '' && !checkWinner()) {
+                board[index] = currentPlayer;
+                renderBoard();
+                if (checkWinner()) {
+                    setTimeout(() => {
+                        winnerPanel.style.display = 'block';
+                        document.getElementById('winnerText').innerText = `${winnerName} wins!`;
+                    }, 100);
+                } else if (board.every(cell => cell !== '')) {
+                    setTimeout(() => {
+                        winnerPanel.style.display = 'block';
+                        document.getElementById('winnerText').innerText = "It's a draw!";
+                    }, 100);
+                } else {
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                }
+            }
+        }
+
+        function restartGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            renderBoard();
+            modal.classList.add('active');
+            winnerPanel.style.display = 'none';
+        }
+
+        function startGame() {
+            player1Name = document.getElementById('player1').value.trim();
+            player2Name = document.getElementById('player2').value.trim();
+            if (player1Name && player2Name) {
+                currentPlayer = 'X';
+                modal.classList.remove('active');
+                renderBoard();
+            } else {
+                alert("Please enter names for both players!");
+            }
+        }
+
+        function checkWinner() {
+            const winningConditions = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            for (let condition of winningConditions) {
+                const [a, b, c] = condition;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    winnerName = board[a] === 'X' ? player1Name : player2Name;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        renderBoard();
+    </script>
+</body>
+</html>
