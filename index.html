@@ -10,9 +10,11 @@
     <style>
         
 body {
-  background-image: url("Bg.jpg");
+  background-image: url("WhatsApp Image 2024-10-22 at 16.22.45_fd4b786f.jpg");
   display: flex;
   justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
  .image{
     position: absolute;
@@ -25,9 +27,15 @@ a{
     position: relative;
     top: 10px;
     left: 1080px;
-    color: black;
+    color: rgb(255, 250, 250);
     padding: 20px 10px;
     font-family: "Roboto Condensed", sans-serif;
+}
+nav{
+    background-color: rgb(39, 39, 39);
+    margin-top: -10px;
+    height: 50px;
+    width: 10000px;
 }
 
 html{
@@ -52,13 +60,16 @@ html{
     margin-top: 100px;
     position: absolute;
 }
+.logo{
+    filter: invert(1);
+}
 </style>
 </head>
 <body>
  <nav>
     <div class="Logo">
         <div class="image">
-            <img src="11BG.png" alt=" LOGO IMAGE" height="200px" width="200px">
+            <img class="logo" src="11BG.png" alt=" LOGO IMAGE" height="200px" width="200px">
         </div>
         <div class="text"></div>
     </div>
