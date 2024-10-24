@@ -38,7 +38,7 @@ ul{
  a{
     position:relatve;
     background: -webkit-linear-gradient(45deg ,#F6EA41 , #F048C6);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 100;
     font-family:HeyComic;
