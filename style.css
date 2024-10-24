@@ -53,3 +53,7 @@ ul{
     font-family: HeyComic;
     src: url(Hey\ Comic.ttf);
  }
+ @font-face {
+    font-family: About;
+    src: url(Insanibc.ttf);
+ }
