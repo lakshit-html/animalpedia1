@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About HELP</title>
     <style>
+        *{
+            padding:0px;
+            margin: 0px;
+        }
         h1{
-            color: white;
+            color: rgb(10, 9, 9);
             font-family: Impact, serif;
     font-size: 3rem;
     font-weight: 900;
@@ -14,23 +18,19 @@
     line-height: 1;
     margin-bottom: 1rem;
     text-transform: uppercase;
+    margin-top: 10px;
         }
         .heading{
-            color: darkorange;
-            margin-top: -63px;
-            margin-left: 200px;
-        }
-        .heading2{
             color: darkorange;
             margin-top: -18px;
         }
         div{
-            width: 520px;
+            width: 550px;
             margin-left: 60px;
           
         }
         body{
-            background-color: rgb(193, 190, 190);
+            background-color: rgb(245, 241, 222) ;
         }
         p{
             margin-left: 60px;
@@ -39,28 +39,124 @@
           font-family: HeyComic;
         }
         h2{
-            margin-left: 60px;
+            /* margin-left: 60px; */
+            margin-bottom: 5px;
         }
         @font-face {
     font-family: HeyComic;
     src: url(Hey\ Comic.ttf);
  }
+
+ .Nav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+
+ }
+
+
+ .logo{
+    position: absolute;
+    display: flex;
+    z-index: 5;
+    filter:invert(1);
+
+}
+
+ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+   
+}
+ul{
+    float: left;
+  
+    display: flex;
+    text-decoration: none;
+    margin-left: 850px;
+    margin-top: 10px;
+    z-index: 5;
+    font-size: 30px;
+ 
+
+}
+ ul li {
+    padding: 10px 40px;
+    display: inline ;
+    z-index: 5;
+
+
+
+    
+ }
+ a{
+    position:relatve;
+    background: -webkit-linear-gradient(45deg ,#F6EA41 , #F048C6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 100;
+    font-family:HeyComic;
+    transition: 0.5s ease-in-out;
+    
+ }
+ a:hover{
+    font-size: 40px;
+ }
+
+ @font-face {
+    font-family: HeyComic;
+    src: url(Hey\ Comic.ttf);
+ }
+.divbg{
+    background-color: white;
+    margin: 20px 20px;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    border-radius: 20px;
+    flex-wrap: wrap;
+
+}
+.ourvalues{
+    margin-left: -3px;
+}
+.objects:hover{
+height: 30px;
+width: 30px;
+}
+    
     </style>
 </head>
 <body>
+    <nav class="Nav">
+        <Div class="logo">
+            <img height="80px" width=150px; src="Screenshot_2024-10-22_154148-removebg-preview (1).png" alt="">
+        </Div>
+        <ul class="ul">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Works</a></li>
+          </ul>
+            
+            </nav>
     <div>
         <h1>Empowering Communities To Advance Social Change Through</h1>
-        <h1 class="heading">Accessible</h1>
-        <h1 class="heading2"> Technology Solutions</h1>
+        <h1 class="heading">Accessible Technology Solutions</h1>
+       
     </div>
-    <div>
+    <div class="objects">
+    <div class="divbg">
         <h2>
             Introduction:
         </h2>
         <p>Welcome to [HELP], a revolutionary platform connecting citizens with municipal corporations to address local issues efficiently. Our mission is to bridge the gap between citizens and municipal authorities, ensuring seamless communication and effective problem-solving.
         </p>
     </div>
-    <div>
+    <div  class="divbg">
         <h2>
             Our Vision:
         </h2>
@@ -68,7 +164,7 @@
 
         </p>
     </div>
-    <div>
+    <div  class="divbg">
         <h2>
             Our Objectives:
         </h2>
@@ -79,7 +175,7 @@
 4. Empower citizens to take ownership of community development. <br>
         </p>
     </div>
-    <div>
+    <div  class="divbg">
         <h2>
             How We Work:  
         </h2>
@@ -90,9 +186,9 @@
 4. Citizens track progress and provide feedback. <br>
         </p>
     </div>
-    <div>
-        <h2>
-            Our Values:
+    <div  class="divbg";>
+        <h2 class="ourvalues">
+          &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Our Values:
         </h2>
         <p>
             1. Citizen-centric approach <br>
@@ -102,10 +198,11 @@
 5. Inclusivity and social responsibility <br>
         </p>
     </div>
-    <div>
+    <div  class="divbg">
         <h2>
             Meet Our Team:  
         </h2>
     </div>
+</div>
 </body>
 </html>

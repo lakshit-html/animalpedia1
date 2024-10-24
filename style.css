@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     z-index: 5;
-
+   
 }
 
 ul{
@@ -16,7 +16,7 @@ ul{
     /* position:inherit; */
     display: flex;
     text-decoration: none;
-    margin-left: 400px;
+    margin-left: 850px;
     margin-top: 10px;
     z-index: 5;
     font-size: 30px;
